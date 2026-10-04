@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUMP RUNNER - BOSS BATTLE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.game-page {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(124,92,255,.20), transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(0,198,255,.12), transparent 35%),
+                #050812;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .game-wrapper {
+            width: min(1080px, 96%);
+            margin: 0 auto;
+            padding: 22px 0 35px;
+        }
+        .game-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+        .game-title {
+            font-weight: 800;
+            font-size: clamp(18px, 3vw, 28px);
+            letter-spacing: .5px;
+        }
+        .game-title span {
+            color: #7c5cff;
+        }
+        .back-button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 10px;
+            background: rgba(255,255,255,.06);
+        }
+        .back-button:hover {
+            background: rgba(255,255,255,.12);
+        }
+        .canvas-wrap {
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 25px 80px rgba(0,0,0,.45);
+        }
+        #gameCanvas {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: auto;
+            border-radius: 14px;
+            background: #071426;
+            touch-action: none;
+        }
+        .controls-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .controls-info span {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.10);
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+        .game-note {
+            text-align: center;
+            color: #8f9bad;
+            font-size: 14px;
+        }
+        .mobile-controls, .mobile-control {
+            display: none;
+        }
+        @media (max-width: 700px) {
+            .game-topbar {
+                align-items: flex-start;
+                flex-direction: column-reverse;
+            }
+            .controls-info {
+                display: none;
+            }
+            .mobile-controls {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 14px;
+            }
+            .mobile-controls button, .mobile-control {
+                border: 0;
+                border-radius: 14px;
+                color: white;
+                background: linear-gradient(135deg, #7c5cff, #5b3df5);
+                font-size: 22px;
+                font-weight: 800;
+                min-width: 68px;
+                min-height: 54px;
+                box-shadow: 0 8px 25px rgba(92,80,255,.25);
+                touch-action: manipulation;
+            }
+            .mobile-control {
+                display: block;
+                width: 100%;
+                margin-top: 12px;
+            }
+            .game-note {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="game-page">
+
+    <div class="game-wrapper">
+        <div class="game-topbar">
+            <a href="index2.html" class="back-button">← Retour au site</a>
+            <div class="game-title">🎮 JUMP RUNNER <span>BOSS BATTLE</span></div>
+        </div>
+
+        <div class="canvas-wrap">
+            <canvas id="gameCanvas" width="1000" height="550"></canvas>
+        </div>
+
+        <div class="controls-info">
+            <span>⬅️ / Q : Reculer</span>
+            <span>➡️ / D : Avancer</span>
+            <span>␣ ESPACE : Sauter</span>
+            <span>F : Tirer</span>
+        </div>
+
+        <button id="mobileJump" class="mobile-control jump-control">␣ SAUT</button>
+        <div class="mobile-controls">
+            <button id="mobileLeft">←</button>
+            <button id="mobileFire">🔥</button>
+            <button id="mobileRight">→</button>
+        </div>
+
+        <p class="game-note">Sur ordinateur : utilise le clavier. Sur mobile : utilise les boutons à l'écran.</p>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
